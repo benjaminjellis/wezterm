@@ -1,13 +1,14 @@
 -- Pull in the wezterm API
 local wezterm = require 'wezterm'
 
--- This will hold the configuration.
 local config = wezterm.config_builder()
-
--- This is where you actually apply your config choices
-
--- For example, changing the color scheme:
+config.colors = {
+  cursor_bg = "#fcef0c",
+  cursor_border = "#fcef0c"
+}
 config.use_fancy_tab_bar = false
+config.send_composed_key_when_left_alt_is_pressed = true
+config.send_composed_key_when_right_alt_is_pressed = true
 config.color_scheme = 'Catppuccin Mocha'
 config.font = wezterm.font 'MartianMono Nerd Font'
 config.font_size = 16.0
