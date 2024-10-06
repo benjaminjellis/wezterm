@@ -5,8 +5,8 @@ local config = wezterm.config_builder()
 config.use_fancy_tab_bar = false
 config.send_composed_key_when_left_alt_is_pressed = true
 config.send_composed_key_when_right_alt_is_pressed = true
-config.color_scheme = "Catppuccin Mocha"
 config.initial_rows = 50
+config.color_scheme = "citruszest"
 config.font = wezterm.font("MartianMono Nerd Font")
 config.font_size = 16.0
 config.window_decorations = "RESIZE"
@@ -18,6 +18,5 @@ config.window_padding = {
 	bottom = 0,
 }
 config.window_close_confirmation = "NeverPrompt"
-
 -- and finally, return the configuration to wezterm
 return config
