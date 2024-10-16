@@ -1,11 +1,16 @@
 -- Pull in the wezterm API
 local wezterm = require("wezterm")
 
+local mux = wezterm.mux
+
+wezterm.on("gui-startup", function(cmd)
+	local tab, pane, window = mux.spawn_window(cmd or {})
+	window:gui_window():maximize()
+end)
 local config = wezterm.config_builder()
 config.use_fancy_tab_bar = false
 config.send_composed_key_when_left_alt_is_pressed = true
 config.send_composed_key_when_right_alt_is_pressed = true
-config.initial_rows = 50
 config.color_scheme = "citruszest"
 config.font = wezterm.font("MartianMono Nerd Font")
 config.font_size = 16.0
