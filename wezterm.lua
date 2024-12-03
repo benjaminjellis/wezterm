@@ -50,6 +50,26 @@ end)
 wezterm.on("ActivatePaneDirection-down", function(window, pane)
 	conditionalActivatePane(window, pane, "Down", "j")
 end)
+
+---@param launch_spotify boolean
+local function launch_panes(launch_spotify)
+	return wezterm.action_callback(function(_, pane)
+		pane:send_text("nvim\n")
+		local left_pane = pane:split({
+			direction = "Left",
+			size = 0.2,
+		})
+		local bottom_left_pane = left_pane:split({
+			direction = "Bottom",
+			size = 0.5,
+		})
+
+		if launch_spotify then
+			bottom_left_pane:send_text("spotify_player\n")
+		end
+	end)
+end
+
 config.keys = {
 	-- Integration with neovim panes
 	{ key = "h", mods = "CTRL", action = wezterm.action.EmitEvent("ActivatePaneDirection-left") },
@@ -62,20 +82,12 @@ config.keys = {
 	{
 		key = "D",
 		mods = "CTRL|SHIFT",
-		action = wezterm.action_callback(function(_, pane)
-			pane:send_text("nvim\n")
-			local left_pane = pane:split({
-				direction = "Left",
-				size = 0.2,
-			})
-
-			local bottom_left_pane = left_pane:split({
-				direction = "Bottom",
-				size = 0.5,
-			})
-
-			bottom_left_pane:send_text("spotify_player\n")
-		end),
+		action = launch_panes(false),
+	},
+	{
+		key = "S",
+		mods = "CTRL|SHIFT",
+		action = launch_panes(true),
 	},
 }
 
