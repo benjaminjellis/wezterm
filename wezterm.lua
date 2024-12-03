@@ -66,6 +66,24 @@ config.keys = {
 
 	-- Full screen
 	{ key = "Enter", mods = "OPT", action = wezterm.action.ToggleFullScreen },
+	{
+		key = "D",
+		mods = "CTRL|SHIFT",
+		action = wezterm.action_callback(function(window, pane)
+			pane:send_text("nvim\n")
+			local left_pane = pane:split({
+				direction = "Left",
+				size = 0.2,
+			})
+
+			local bottom_left_pane = left_pane:split({
+				direction = "Bottom",
+				size = 0.5,
+			})
+
+			bottom_left_pane:send_text("spotify_player\n")
+		end),
+	},
 }
 
 config.use_fancy_tab_bar = false
@@ -94,11 +112,22 @@ config.colors = {
 			fg_color = "#ECEFF4",
 		},
 
-		-- Inactive tab styling
+		new_tab = {
+			bg_color = "#191724", -- Background color of new tab button
+			fg_color = "#2E3440", -- Text color of new tab button
+		},
+
+		new_tab_hover = {
+
+			bg_color = "#191724", -- Background color of new tab button
+			fg_color = "#2E3440", -- Text color of new tab button
+		},
+
 		inactive_tab = {
 			bg_color = "#191724",
 			fg_color = "#E0DEF4",
 		},
+
 		inactive_tab_hover = {
 			bg_color = "#191724",
 			fg_color = "#E0DEF4",
