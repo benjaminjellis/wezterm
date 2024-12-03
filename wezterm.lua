@@ -51,13 +51,6 @@ wezterm.on("ActivatePaneDirection-down", function(window, pane)
 	conditionalActivatePane(window, pane, "Down", "j")
 end)
 config.keys = {
-	-- -- More easy split key mappings
-	-- { key = "|", mods = "LEADER|SHIFT", action = wezterm.action.SplitHorizontal({ domain = "CurrentPaneDomain" }) },
-	-- { key = "-", mods = "LEADER", action = wezterm.action.SplitVertical({ domain = "CurrentPaneDomain" }) },
-	--
-	-- -- Send "CTRL-A" to the terminal when pressing CTRL-A, CTRL-A
-	-- { key = "a", mods = "LEADER|CTRL", action = wezterm.action.SendString("\x01") },
-
 	-- Integration with neovim panes
 	{ key = "h", mods = "CTRL", action = wezterm.action.EmitEvent("ActivatePaneDirection-left") },
 	{ key = "j", mods = "CTRL", action = wezterm.action.EmitEvent("ActivatePaneDirection-down") },
@@ -69,7 +62,7 @@ config.keys = {
 	{
 		key = "D",
 		mods = "CTRL|SHIFT",
-		action = wezterm.action_callback(function(window, pane)
+		action = wezterm.action_callback(function(_, pane)
 			pane:send_text("nvim\n")
 			local left_pane = pane:split({
 				direction = "Left",
