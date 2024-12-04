@@ -70,27 +70,7 @@ local function launch_panes(launch_spotify)
 	end)
 end
 
-config.keys = {
-	-- Integration with neovim panes
-	{ key = "h", mods = "CTRL", action = wezterm.action.EmitEvent("ActivatePaneDirection-left") },
-	{ key = "j", mods = "CTRL", action = wezterm.action.EmitEvent("ActivatePaneDirection-down") },
-	{ key = "k", mods = "CTRL", action = wezterm.action.EmitEvent("ActivatePaneDirection-up") },
-	{ key = "l", mods = "CTRL", action = wezterm.action.EmitEvent("ActivatePaneDirection-right") },
-
-	-- Full screen
-	{ key = "Enter", mods = "OPT", action = wezterm.action.ToggleFullScreen },
-	{
-		key = "D",
-		mods = "CTRL|SHIFT",
-		action = launch_panes(false),
-	},
-	{
-		key = "S",
-		mods = "CTRL|SHIFT",
-		action = launch_panes(true),
-	},
-}
-
+config.leader = { key = "a", mods = "CTRL" }
 config.use_fancy_tab_bar = false
 config.send_composed_key_when_left_alt_is_pressed = true
 config.send_composed_key_when_right_alt_is_pressed = true
@@ -105,6 +85,40 @@ config.window_padding = {
 	right = 0,
 	top = 10,
 	bottom = 0,
+}
+
+config.keys = {
+	{ key = "h", mods = "CTRL", action = wezterm.action.EmitEvent("ActivatePaneDirection-left") },
+	{ key = "j", mods = "CTRL", action = wezterm.action.EmitEvent("ActivatePaneDirection-down") },
+	{ key = "k", mods = "CTRL", action = wezterm.action.EmitEvent("ActivatePaneDirection-up") },
+	{ key = "l", mods = "CTRL", action = wezterm.action.EmitEvent("ActivatePaneDirection-right") },
+
+	{
+		key = "D",
+		mods = "CTRL|SHIFT",
+		action = launch_panes(false),
+	},
+	{
+		key = "S",
+		mods = "CTRL|SHIFT",
+		action = launch_panes(true),
+	},
+	{
+		key = "H",
+		mods = "LEADER",
+		action = wezterm.action.AdjustPaneSize({ "Left", 5 }),
+	},
+	{
+		key = "J",
+		mods = "LEADER",
+		action = wezterm.action.AdjustPaneSize({ "Down", 5 }),
+	},
+	{ key = "K", mods = "LEADER", action = wezterm.action.AdjustPaneSize({ "Up", 5 }) },
+	{
+		key = "L",
+		mods = "LEADER",
+		action = wezterm.action.AdjustPaneSize({ "Right", 5 }),
+	},
 }
 
 config.colors = {
