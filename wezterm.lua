@@ -99,6 +99,7 @@ config.font = wezterm.font("MartianMono Nerd Font")
 config.font_size = 16.0
 config.window_decorations = "RESIZE"
 config.hide_tab_bar_if_only_one_tab = true
+config.max_fps = 120
 config.window_padding = {
 	left = 0,
 	right = 0,
@@ -113,7 +114,7 @@ config.colors = {
 
 		-- Active tab styling
 		active_tab = {
-			bg_color = "#C4A7E7",
+			bg_color = "#f6c177",
 			fg_color = "#ECEFF4",
 		},
 
@@ -123,7 +124,6 @@ config.colors = {
 		},
 
 		new_tab_hover = {
-
 			bg_color = "#191724", -- Background color of new tab button
 			fg_color = "#2E3440", -- Text color of new tab button
 		},
