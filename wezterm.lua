@@ -2,10 +2,10 @@
 local wezterm = require("wezterm")
 
 local config = wezterm.config_builder()
-local mux = wezterm.mux
 
+-- when wezterm is opened make it fill the screen
 wezterm.on("gui-startup", function(cmd)
-	local _, _, window = mux.spawn_window(cmd or {})
+	local _, _, window = wezterm.mux.spawn_window(cmd or {})
 	window:gui_window():maximize()
 end)
 
@@ -71,6 +71,9 @@ local function launch_panes(launch_spotify)
 end
 
 config.leader = { key = "a", mods = "CTRL" }
+-- enabling these make the terminal transparent
+-- config.window_background_opacity = 0.9
+-- config.macos_window_background_blur = 70
 config.use_fancy_tab_bar = false
 config.send_composed_key_when_left_alt_is_pressed = true
 config.send_composed_key_when_right_alt_is_pressed = true
@@ -88,6 +91,7 @@ config.window_padding = {
 }
 
 config.keys = {
+	-- tmux bindings for switching between panes
 	{ key = "h", mods = "CTRL", action = wezterm.action.EmitEvent("ActivatePaneDirection-left") },
 	{ key = "j", mods = "CTRL", action = wezterm.action.EmitEvent("ActivatePaneDirection-down") },
 	{ key = "k", mods = "CTRL", action = wezterm.action.EmitEvent("ActivatePaneDirection-up") },
@@ -122,24 +126,24 @@ config.keys = {
 }
 
 config.colors = {
+	-- tab colours to match rose-pine colour scheme
 	tab_bar = {
-		-- Background color of the entire tab bar
+		-- Background color of the entire tab bar, doesn't affect the fancy tab bar
 		background = "#191724",
 
-		-- Active tab styling
 		active_tab = {
 			bg_color = "#f6c177",
 			fg_color = "#ECEFF4",
 		},
 
 		new_tab = {
-			bg_color = "#191724", -- Background color of new tab button
-			fg_color = "#2E3440", -- Text color of new tab button
+			bg_color = "#191724",
+			fg_color = "#2E3440",
 		},
 
 		new_tab_hover = {
-			bg_color = "#191724", -- Background color of new tab button
-			fg_color = "#2E3440", -- Text color of new tab button
+			bg_color = "#191724",
+			fg_color = "#2E3440",
 		},
 
 		inactive_tab = {
