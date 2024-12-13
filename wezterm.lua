@@ -51,15 +51,25 @@ wezterm.on("ActivatePaneDirection-down", function(window, pane)
 	conditionalActivatePane(window, pane, "Down", "j")
 end)
 
-local function set_up_vertical_panes()
+---@param mode string
+---@param size number
+local function set_up_two_panes(mode, size)
 	return wezterm.action_callback(function(_, pane)
-		local top_pane = pane:split({
-			direction = "Top",
-			size = 0.6,
+		local new_pane = pane:split({
+			direction = mode,
+			size = size,
 		})
 
-		top_pane:send_text("nvim\n")
+		new_pane:send_text("nvim\n")
 	end)
+end
+
+local function set_up_horizontal_panes()
+	return set_up_two_panes("Right", 0.7)
+end
+
+local function set_up_vertical_panes()
+	return set_up_two_panes("Top", 0.6)
 end
 
 ---@param launch_spotify boolean
@@ -117,6 +127,11 @@ config.keys = {
 		key = "S",
 		mods = "CTRL|SHIFT",
 		action = set_up_dev_panes(true),
+	},
+	{
+		key = "H",
+		mods = "CTRL|SHIFT",
+		action = set_up_horizontal_panes(),
 	},
 	{
 		key = "V",
