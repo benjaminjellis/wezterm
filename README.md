@@ -5,7 +5,6 @@ local M = {}
 
 function M.run(config)
     -- change the wezterm config here 
-    return config
 end
 
 return M

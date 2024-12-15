@@ -9,8 +9,7 @@ local loaded, private = pcall(function()
 end)
 
 if loaded then
-	---@diagnostic disable-next-line: unused-local, redefined-local
-	local config = private.run(config)
+	private.run(config)
 end
 
 -- when wezterm is opened make it fill the screen
