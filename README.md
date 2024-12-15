@@ -3,10 +3,10 @@ This config supports adding a file `private.lua` in the root. Private config set
 ```lua
 local M = {}
 
-function M.run(config){
+function M.run(config)
     -- change the wezterm config here 
     return config
-}
+end
 
 return M
 ```
