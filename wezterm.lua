@@ -3,6 +3,15 @@ local wezterm = require("wezterm")
 
 local config = wezterm.config_builder()
 
+local loaded, private = pcall(function()
+	return require("private")
+end)
+
+if loaded then
+	---@diagnostic disable-next-line: unused-local, redefined-local
+	local config = private.Run(config)
+end
+
 -- when wezterm is opened make it fill the screen
 wezterm.on("gui-startup", function(cmd)
 	local _, _, window = wezterm.mux.spawn_window(cmd or {})
