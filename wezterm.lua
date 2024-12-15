@@ -172,8 +172,8 @@ config.colors = {
 		background = "#191724",
 
 		active_tab = {
-			bg_color = "#f6c177",
-			fg_color = "#ECEFF4",
+			bg_color = "#eb6f92",
+			fg_color = "#e0def4",
 		},
 
 		new_tab = {
