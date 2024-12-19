@@ -138,12 +138,12 @@ config.keys = {
 		action = set_up_dev_panes(true),
 	},
 	{
-		key = "H",
+		key = "|",
 		mods = "CTRL|SHIFT",
 		action = set_up_horizontal_panes(),
 	},
 	{
-		key = "V",
+		key = "B",
 		mods = "CTRL|SHIFT",
 		action = set_up_vertical_panes(),
 	},
