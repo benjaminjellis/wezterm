@@ -97,6 +97,7 @@ local function set_up_dev_panes(launch_spotify)
 		if launch_spotify then
 			bottom_left_pane:send_text("spotify_player\n")
 		end
+		pane:activate()
 	end)
 end
 
