@@ -70,6 +70,7 @@ local function set_up_two_panes(mode, size)
 		})
 
 		new_pane:send_text("nvim\n")
+		new_pane:activate()
 	end)
 end
 
@@ -84,7 +85,6 @@ end
 ---@param launch_spotify boolean
 local function set_up_dev_panes(launch_spotify)
 	return wezterm.action_callback(function(_, pane)
-		pane:send_text("nvim\n")
 		local left_pane = pane:split({
 			direction = "Left",
 			size = 0.2,
@@ -97,7 +97,9 @@ local function set_up_dev_panes(launch_spotify)
 		if launch_spotify then
 			bottom_left_pane:send_text("spotify_player\n")
 		end
+
 		pane:activate()
+		pane:send_text("nvim\n")
 	end)
 end
 
@@ -110,7 +112,7 @@ config.send_composed_key_when_left_alt_is_pressed = true
 config.send_composed_key_when_right_alt_is_pressed = true
 config.color_scheme = "Rosé Pine (Gogh)"
 config.font = wezterm.font("MartianMono Nerd Font")
-config.font_size = 16.0
+config.font_size = 14.0
 config.window_decorations = "RESIZE"
 config.hide_tab_bar_if_only_one_tab = true
 config.max_fps = 120
