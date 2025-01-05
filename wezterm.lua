@@ -19,7 +19,7 @@ wezterm.on("gui-startup", function(cmd)
 end)
 
 -- Integration with neovim panes
-local function isViProcess(pane)
+local function is_vi_process(pane)
 	-- get_foreground_process_name On Linux, macOS and Windows,
 	-- the process can be queried to determine this path. Other operating systems
 	-- (notably, FreeBSD and other unix systems) are not currently supported
@@ -28,10 +28,10 @@ local function isViProcess(pane)
 	return pane:get_title():find("n?vim") ~= nil
 end
 
-local function conditionalActivatePane(window, pane, pane_direction, vim_direction)
+local function conditional_activate_pane(window, pane, pane_direction, vim_direction)
 	local vim_pane_changed = false
 
-	if isViProcess(pane) then
+	if is_vi_process(pane) then
 		local before = pane:get_cursor_position()
 		window:perform_action(wezterm.action.SendKey({ key = vim_direction, mods = "CTRL" }), pane)
 		wezterm.sleep_ms(50)
@@ -47,17 +47,17 @@ local function conditionalActivatePane(window, pane, pane_direction, vim_directi
 	end
 end
 
-wezterm.on("ActivatePaneDirection-right", function(window, pane)
-	conditionalActivatePane(window, pane, "Right", "l")
+wezterm.on("ActivatePaneDirection-Right", function(window, pane)
+	conditional_activate_pane(window, pane, "Right", "l")
 end)
-wezterm.on("ActivatePaneDirection-left", function(window, pane)
-	conditionalActivatePane(window, pane, "Left", "h")
+wezterm.on("ActivatePaneDirection-Left", function(window, pane)
+	conditional_activate_pane(window, pane, "Left", "h")
 end)
-wezterm.on("ActivatePaneDirection-up", function(window, pane)
-	conditionalActivatePane(window, pane, "Up", "k")
+wezterm.on("ActivatePaneDirection-Up", function(window, pane)
+	conditional_activate_pane(window, pane, "Up", "k")
 end)
-wezterm.on("ActivatePaneDirection-down", function(window, pane)
-	conditionalActivatePane(window, pane, "Down", "j")
+wezterm.on("ActivatePaneDirection-Down", function(window, pane)
+	conditional_activate_pane(window, pane, "Down", "j")
 end)
 
 ---@param mode string
@@ -111,7 +111,7 @@ config.use_fancy_tab_bar = false
 config.send_composed_key_when_left_alt_is_pressed = true
 config.send_composed_key_when_right_alt_is_pressed = true
 config.color_scheme = "Rosé Pine (Gogh)"
-config.font = wezterm.font("SFMono Nerd Font")
+config.font = wezterm.font("MartianMono Nerd Font")
 config.font_size = 14.0
 config.window_decorations = "RESIZE"
 config.hide_tab_bar_if_only_one_tab = true
@@ -125,10 +125,10 @@ config.window_padding = {
 
 config.keys = {
 	-- tmux bindings for switching between panes
-	{ key = "h", mods = "CTRL", action = wezterm.action.EmitEvent("ActivatePaneDirection-left") },
-	{ key = "j", mods = "CTRL", action = wezterm.action.EmitEvent("ActivatePaneDirection-down") },
-	{ key = "k", mods = "CTRL", action = wezterm.action.EmitEvent("ActivatePaneDirection-up") },
-	{ key = "l", mods = "CTRL", action = wezterm.action.EmitEvent("ActivatePaneDirection-right") },
+	{ key = "h", mods = "CTRL", action = wezterm.action.EmitEvent("ActivatePaneDirection-Left") },
+	{ key = "j", mods = "CTRL", action = wezterm.action.EmitEvent("ActivatePaneDirection-Down") },
+	{ key = "k", mods = "CTRL", action = wezterm.action.EmitEvent("ActivatePaneDirection-Up") },
+	{ key = "l", mods = "CTRL", action = wezterm.action.EmitEvent("ActivatePaneDirection-Right") },
 
 	{
 		key = "D",
