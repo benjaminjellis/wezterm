@@ -87,7 +87,7 @@ local function set_up_dev_panes(launch_spotify)
 	return wezterm.action_callback(function(_, pane)
 		local left_pane = pane:split({
 			direction = "Left",
-			size = 0.2,
+			size = 0.3,
 		})
 		local bottom_left_pane = left_pane:split({
 			direction = "Bottom",
