@@ -111,7 +111,11 @@ config.use_fancy_tab_bar = false
 config.send_composed_key_when_left_alt_is_pressed = true
 config.send_composed_key_when_right_alt_is_pressed = true
 config.color_scheme = "Rosé Pine (Gogh)"
-config.font = wezterm.font("MartianMono Nerd Font")
+config.font = wezterm.font({
+	family = "Monaspace Neon",
+	weight = "Medium",
+	harfbuzz_features = { "calt", "liga", "dlig", "ss01", "ss02", "ss03", "ss04", "ss05", "ss06", "ss07", "ss08" },
+})
 config.font_size = 14.0
 config.window_decorations = "RESIZE"
 config.hide_tab_bar_if_only_one_tab = true
