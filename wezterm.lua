@@ -112,7 +112,7 @@ config.send_composed_key_when_left_alt_is_pressed = true
 config.send_composed_key_when_right_alt_is_pressed = true
 config.color_scheme = "Rosé Pine (Gogh)"
 config.font = wezterm.font({
-	family = "SFMono Nerd Font",
+	family = "Liga SFMono Nerd Font",
 	weight = "DemiBold",
 	harfbuzz_features = { "calt", "liga", "dlig", "ss01", "ss02", "ss03", "ss04", "ss05", "ss06", "ss07", "ss08" },
 })
