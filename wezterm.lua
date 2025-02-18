@@ -110,7 +110,7 @@ config.macos_window_background_blur = 70
 config.use_fancy_tab_bar = false
 config.send_composed_key_when_left_alt_is_pressed = true
 config.send_composed_key_when_right_alt_is_pressed = true
-config.color_scheme = "Rosé Pine (Gogh)"
+config.color_scheme = "Everforest Dark (Gogh)"
 config.font = wezterm.font({
 	family = "Liga SFMono Nerd Font",
 	weight = "DemiBold",
@@ -176,31 +176,31 @@ config.colors = {
 	-- tab colours to match rose-pine colour scheme
 	tab_bar = {
 		-- Background color of the entire tab bar, doesn't affect the fancy tab bar
-		background = "#191724",
+		background = "#2d353b",
 
 		active_tab = {
-			bg_color = "#eb6f92",
-			fg_color = "#e0def4",
+			bg_color = "#dbbc7f",
+			fg_color = "#d699b6",
 		},
 
 		new_tab = {
-			bg_color = "#191724",
-			fg_color = "#2E3440",
+			bg_color = "#2d353b",
+			fg_color = "#dbbc7f",
 		},
 
 		new_tab_hover = {
-			bg_color = "#191724",
-			fg_color = "#2E3440",
+			bg_color = "#2d353b",
+			fg_color = "#d699b6",
 		},
 
 		inactive_tab = {
-			bg_color = "#191724",
-			fg_color = "#E0DEF4",
+			bg_color = "#2d353b",
+			fg_color = "#d3c6aa",
 		},
 
 		inactive_tab_hover = {
-			bg_color = "#191724",
-			fg_color = "#E0DEF4",
+			bg_color = "#2d353b",
+			fg_color = "#d699b6",
 		},
 	},
 }
