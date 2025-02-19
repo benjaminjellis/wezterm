@@ -200,7 +200,7 @@ config.colors = {
 
 		inactive_tab_hover = {
 			bg_color = "#2d353b",
-			fg_color = "#d3c6aa",
+			fg_color = "#d699b6",
 		},
 	},
 }
