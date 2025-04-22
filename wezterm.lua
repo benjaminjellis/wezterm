@@ -3,6 +3,7 @@ local wezterm = require("wezterm")
 
 local config = wezterm.config_builder()
 
+config.use_wayland = false
 -- try to load the private module
 local loaded, private = pcall(function()
 	return require("private")
