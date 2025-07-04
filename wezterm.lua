@@ -3,8 +3,6 @@ local wezterm = require("wezterm")
 
 local config = wezterm.config_builder()
 
-config.enable_wayland = false
-
 -- try to load the private module
 local loaded, private = pcall(function()
 	return require("private")
@@ -119,7 +117,7 @@ config.font = wezterm.font({
 	harfbuzz_features = { "calt", "liga", "dlig", "ss01", "ss02", "ss03", "ss04", "ss05", "ss06", "ss07", "ss08" },
 })
 config.font_size = 14
-config.window_decorations = "RESIZE"
+config.window_decorations = "None"
 config.hide_tab_bar_if_only_one_tab = true
 config.max_fps = 120
 config.window_padding = {
