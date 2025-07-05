@@ -1,6 +1,14 @@
 -- Pull in the wezterm API
 local wezterm = require("wezterm")
 
+local is_linux = function()
+	return wezterm.target_triple:find("linux") ~= nil
+end
+
+local is_darwin = function()
+	return wezterm.target_triple:find("darwin") ~= nil
+end
+
 local config = wezterm.config_builder()
 
 -- try to load the private module
@@ -12,11 +20,13 @@ if loaded then
 	private.run(config)
 end
 
--- when wezterm is opened make it fill the screen
-wezterm.on("gui-startup", function(cmd)
-	local _, _, window = wezterm.mux.spawn_window(cmd or {})
-	window:gui_window():maximize()
-end)
+-- on macOS when wezterm is opened make it fill the screen
+if is_darwin() then
+	wezterm.on("gui-startup", function(cmd)
+		local _, _, window = wezterm.mux.spawn_window(cmd or {})
+		window:gui_window():maximize()
+	end)
+end
 
 -- Integration with neovim panes
 local function is_vi_process(pane)
@@ -116,8 +126,17 @@ config.font = wezterm.font({
 	weight = "DemiBold",
 	harfbuzz_features = { "calt", "liga", "dlig", "ss01", "ss02", "ss03", "ss04", "ss05", "ss06", "ss07", "ss08" },
 })
-config.font_size = 14
-config.window_decorations = "None"
+
+if is_linux() then
+	config.font_size = 13
+	config.window_decorations = "NONE"
+end
+
+if is_darwin() then
+	config.font_size = 15
+	config.window_decorations = "RESIZE"
+end
+
 config.hide_tab_bar_if_only_one_tab = true
 config.max_fps = 120
 config.window_padding = {
