@@ -113,6 +113,24 @@ local function set_up_dev_panes(launch_spotify)
 	end)
 end
 
+config.color_schemes = {
+	["naysayer"] = {
+		background = "#062625",
+		foreground = "#d0b892",
+		cursor_bg = "#d3c6aa",
+		ansi = {
+			"#0b3335",
+			"#F92672",
+			"#8cde94",
+			"#E6DB74",
+			"#66D9EF",
+			"#AE81FF",
+			"#A1EFE4",
+			"#ffffff",
+		},
+	},
+}
+
 config.leader = { key = "a", mods = "CTRL" }
 -- enabling these make the terminal transparent
 config.window_background_opacity = 0.9
@@ -120,7 +138,7 @@ config.macos_window_background_blur = 70
 config.use_fancy_tab_bar = false
 config.send_composed_key_when_left_alt_is_pressed = true
 config.send_composed_key_when_right_alt_is_pressed = true
-config.color_scheme = "Everforest Dark (Gogh)"
+config.color_scheme = "naysayer"
 config.font = wezterm.font({
 	family = "Liga SFMono Nerd Font",
 	weight = "DemiBold",
