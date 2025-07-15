@@ -113,21 +113,62 @@ local function set_up_dev_panes(launch_spotify)
 	end)
 end
 
+local naysayer_colors = {
+	foreground = "#d0b892",
+	background = "#062625",
+	cursor_bg = "#d3c6aa",
+	light_green = "#8cde94",
+	orange = "#FD971F",
+	ansi = {
+		"#0b3335",
+		"#F92672",
+		"#8cde94",
+		"#E6DB74",
+		"#66D9EF",
+		"#AE81FF",
+		"#A1EFE4",
+		"#ffffff",
+	},
+}
+
+-- tab colours
+config.colors = {
+	tab_bar = {
+		background = naysayer_colors.background,
+
+		active_tab = {
+			bg_color = naysayer_colors.light_green,
+			fg_color = naysayer_colors.orange,
+		},
+
+		new_tab = {
+			bg_color = naysayer_colors.background,
+			fg_color = naysayer_colors.foreground,
+		},
+
+		new_tab_hover = {
+			bg_color = naysayer_colors.background,
+			fg_color = naysayer_colors.orange,
+		},
+
+		inactive_tab = {
+			bg_color = naysayer_colors.background,
+			fg_color = naysayer_colors.foreground,
+		},
+
+		inactive_tab_hover = {
+			bg_color = naysayer_colors.background,
+			fg_color = naysayer_colors.foreground,
+		},
+	},
+}
+
 config.color_schemes = {
 	["naysayer"] = {
-		background = "#062625",
-		foreground = "#d0b892",
-		cursor_bg = "#d3c6aa",
-		ansi = {
-			"#0b3335",
-			"#F92672",
-			"#8cde94",
-			"#E6DB74",
-			"#66D9EF",
-			"#AE81FF",
-			"#A1EFE4",
-			"#ffffff",
-		},
+		background = naysayer_colors.background,
+		foreground = naysayer_colors.foreground,
+		cursor_bg = naysayer_colors.cursor_bg,
+		ansi = naysayer_colors.ansi,
 	},
 }
 
@@ -151,7 +192,7 @@ if is_linux() then
 end
 
 if is_darwin() then
-	config.font_size = 15
+	config.font_size = 18
 	config.window_decorations = "RESIZE"
 end
 
@@ -209,36 +250,4 @@ config.keys = {
 	},
 }
 
-config.colors = {
-	-- tab colours to match rose-pine colour scheme
-	tab_bar = {
-		-- Background color of the entire tab bar, doesn't affect the fancy tab bar
-		background = "#2d353b",
-
-		active_tab = {
-			bg_color = "#a7c080",
-			fg_color = "#859289",
-		},
-
-		new_tab = {
-			bg_color = "#2d353b",
-			fg_color = "#dbbc7f",
-		},
-
-		new_tab_hover = {
-			bg_color = "#2d353b",
-			fg_color = "#d699b6",
-		},
-
-		inactive_tab = {
-			bg_color = "#2d353b",
-			fg_color = "#d3c6aa",
-		},
-
-		inactive_tab_hover = {
-			bg_color = "#2d353b",
-			fg_color = "#d699b6",
-		},
-	},
-}
 return config
