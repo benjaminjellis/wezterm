@@ -129,6 +129,16 @@ local naysayer_colors = {
 		"#A1EFE4",
 		"#ffffff",
 	},
+	brights = {
+		"#7a8478",
+		"#F92672",
+		"#8cde94",
+		"#E6DB74",
+		"#66D9EF",
+		"#F92672",
+		"#83c092",
+		"#ffffff",
+	},
 }
 
 -- tab colours
@@ -169,12 +179,13 @@ config.color_schemes = {
 		foreground = naysayer_colors.foreground,
 		cursor_bg = naysayer_colors.cursor_bg,
 		ansi = naysayer_colors.ansi,
+		brights = naysayer_colors.brights,
 	},
 }
 
 config.leader = { key = "a", mods = "CTRL" }
 -- enabling these make the terminal transparent
-config.window_background_opacity = 0.9
+config.window_background_opacity = 0.95
 config.macos_window_background_blur = 70
 config.use_fancy_tab_bar = false
 config.send_composed_key_when_left_alt_is_pressed = true
